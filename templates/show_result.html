@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Head Tracking</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            height: 100%;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .center-div-nn{
+    		text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+    		justify-content: center;
+    		height: 80vh;
+    		align-items: center;
+        }
+
+        .padding-nn{
+    		padding:10px;
+        }
+        
+        .rborder{
+    		margin: 10px;
+            border-radius: 15px;
+            background: #80808052;
+            ;
+        }
+        
+        input{
+            border-radius: 10px;
+            font-weight: 700;
+        }
+        
+        .break {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class = "center-div-nn padding-nn">
+
+        <form action="/download" method="post" enctype="application/x-www-form-urlencoded">
+
+            <h1 class="padding-nn">Head Detection in Public Transit Hotspots</h1>
+
+            <div>
+                <input type="hidden" id="file_name" name="file_name" value={{ result_path }}>
+            </div>
+            
+            <div>
+                <input id="btn" class="rborder padding-nn" type="submit" value="Download Processed Video" name="down">
+                <button class="rborder padding-nn"><a href="/">Back</a></button>
+            </div>
+            
+
+        </form>
+
+    </div> 
+</body>
+</html>
