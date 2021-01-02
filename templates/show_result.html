@@ -26,6 +26,11 @@
     		align-items: center;
         }
 
+        video {
+            width: 65%    !important;
+            height: auto   !important;
+        }
+
         .padding-nn{
     		padding:10px;
         }
@@ -57,12 +62,23 @@
             <div>
                 <input type="hidden" id="file_name" name="file_name" value={{ result_path }}>
             </div>
+
+            <div class="break"></div>
+
+            <div>
+                <h3> Total No of Heads in the Video: {{ head_count }} </h3>
+            </div>
+
+            <div>
+                <video autoplay controls id="video_player" name="video_player">
+                    <source src={{ ['/results/', result_path] | join('') }} type="video/webm">
+                </video>
+            </div>
             
             <div>
                 <input id="btn" class="rborder padding-nn" type="submit" value="Download Processed Video" name="down">
                 <button class="rborder padding-nn"><a href="/">Back</a></button>
             </div>
-            
 
         </form>
 

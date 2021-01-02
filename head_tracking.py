@@ -80,10 +80,10 @@ def video_inference(video_path):
 
     (H, W) = (img_height, img_width)
     classes = ['background', 'head']
-    save_path = 'output-{}.avi'.format(datetime.datetime.timestamp(start))
+    save_path = 'output-{}.webm'.format(datetime.datetime.timestamp(start))
 
     cap = cv2.VideoCapture(video_path)
-    save = cv2.VideoWriter("./results/"+save_path, cv2.VideoWriter_fourcc(*"MJPG"), 30, (512,512))
+    save = cv2.VideoWriter("./results/"+save_path, cv2.VideoWriter_fourcc('V','P','8','0'), 30, (512,512))
 
     np.set_printoptions(precision=2, suppress=True, linewidth=90)
     frame = None
@@ -124,7 +124,6 @@ def video_inference(video_path):
                 area_rect_frame.append(area_rect((int(xmin),int(ymin)),(int(xmax),int(ymax))))
                 frame = cv2.rectangle(frame,(int(xmin),int(ymin)),(int(xmax),int(ymax)),(255, 0, 0),4)
             
-            print("yes")
         objects = ct.update(rects)
 
         # Loop over the tracked objects
@@ -144,6 +143,6 @@ def video_inference(video_path):
     cap.release()
     save.release()
 
-    print(datetime.datetime.now()-start)
-    return (save_path)
+    print("Time Elapsed:",datetime.datetime.now()-start)
+    return (save_path,head_cnt)
                 
