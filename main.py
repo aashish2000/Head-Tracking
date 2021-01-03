@@ -1,17 +1,25 @@
 import os
-from starlette.responses import JSONResponse, StreamingResponse
 from head_tracking import video_inference
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from asgiref.sync import sync_to_async
+from fastapi.middleware.cors import CORSMiddleware
 
 # Add Environment Variable for instructing the system to run inference on GPU
-# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 app = FastAPI()
 app.mount("/video_files", StaticFiles(directory="./video_files"), name="video_files")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
 
 templates = Jinja2Templates(directory="templates")
 
