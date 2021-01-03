@@ -39,7 +39,7 @@ async def video_receive(request: Request):
         f.write(contents)
     
     # Convert Video Format for viewing in a Browser
-    command = "ffmpeg -i" + video_name + "-c:v libx264 -c:a libfaac -movflags +faststart " + "./video_files/uploaded_videos/" + ".".join((body["fileToUpload"].filename).split(".")[:-1])+".mp4"
+    command = "ffmpeg -i " + video_name + " -c:v libx264 -c:a libfaac -movflags +faststart " + "./video_files/uploaded_videos/" + ".".join((body["fileToUpload"].filename).split(".")[:-1])+".mp4"
     subprocess.call(command, shell=True)
 
 # Process Uploaded Videos from Clients
