@@ -51,4 +51,14 @@ async def video_receive(request: Request):
 # Download Processed Videos
 @app.post("/download", response_class=FileResponse)
 async def download_video(file_name: str = Form(...)):
-    return FileResponse("./video_files/results/"+file_name, media_type='application/octet-stream', filename=file_name)    
+    return FileResponse("./video_files/results/"+file_name, media_type='application/octet-stream', filename=file_name)
+
+# Enable for providing global access URL
+import nest_asyncio
+from pyngrok import ngrok
+import uvicorn
+
+ngrok_tunnel = ngrok.connect(8000)
+print('Public URL:', ngrok_tunnel.public_url)
+nest_asyncio.apply()
+uvicorn.run(app, port=8000)
