@@ -102,7 +102,7 @@ def video_inference(video_path):
         frame = resize_frame(frame, (H,W))
         
         # Perform ROI Segmentation from input frame
-        contours = [np.array([[0, 210], [180, 1800], [230,180], [512, 180], [512, 448],[0,448]])]
+        contours = [np.array([[0, 210], [180, 180], [230,180], [512, 180], [512, 448],[0,448]])]
         frame = roi_segment(frame, contours)
         
         # Invert image channels from BGR to RGB anf run model inference
