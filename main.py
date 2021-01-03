@@ -1,4 +1,4 @@
-import os
+import os, subprocess
 from head_tracking import video_inference
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, FileResponse
@@ -37,7 +37,10 @@ async def video_receive(request: Request):
 
     with open(video_name,"wb") as f:
         f.write(contents)
-
+    
+    # Convert Video Format for viewing in a Browser
+    command = "ffmpeg -i" + video_name + "-c:v libx264 -c:a libfaac -movflags +faststart " + "./video_files/uploaded_videos/" + ".".join((body["fileToUpload"].filename).split(".")[:-1])+".mp4"
+    subprocess.call(command, shell=True)
 
 # Process Uploaded Videos from Clients
 @app.post("/process", response_class=HTMLResponse)
