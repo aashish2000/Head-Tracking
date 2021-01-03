@@ -49,9 +49,9 @@
                     processData: false,
                     success: function(data){
                         var filename = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '')
-                        $("#process_form").toggle();
                         $("#video_player").html("<source src='/video_files/uploaded_videos/"+filename+"' type='video/webm'>");
                         $("#file_name").val(filename)
+                        $("#process_form").toggle();
                     }, 
                 }); 
             }); 
