@@ -41,7 +41,7 @@ def video_inference(video_path):
     conf_thresh = 0.01
 
     # Make sure the path correctly points to the model's .h5 file
-    weights_path = './data/ssd512-hollywood-trainval-bs_16-lr_1e-05-scale_pascal-epoch-188-py3.6.h5'
+    weights_path = './data/ssd512-hollywood-trainval-bs_16-lr_1e-05-scale_pascal-epoch-187-py3.6.h5'
 
     # Create an SSDLoss object in order to pass that to the model loader
     ssd_loss = SSDLoss(neg_pos_ratio=3, n_neg_min=0, alpha=1.0)
@@ -75,7 +75,7 @@ def video_inference(video_path):
     start = datetime.datetime.now()
 
     # Set final confidence threshold for boundign box prediction
-    confidence_threshold = 0.55
+    confidence_threshold = 0.45
 
     # Initalize Centroid Tracker object for Head Tracking
     ct = CentroidTracker()

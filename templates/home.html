@@ -53,7 +53,7 @@
                         var len_file = split_files.length;
                         var new_filename = split_files.slice(0, len_file-1).join(".") + ".mp4";
                         $("#video_player").html("<source src='/video_files/uploaded_videos/"+new_filename+"' type='video/webm'>");
-                        $("#file_name").val(new_filename);
+                        $("#file_name").val(filename);
                         $("#process_form").toggle();
                     }, 
                 }); 
