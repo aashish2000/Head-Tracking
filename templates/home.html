@@ -12,31 +12,38 @@
     
     
     <script>
-            function loading() {
-                document.getElementById('loader').innerHTML = '<div class="ispinner white large animating">'+
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '<div class="ispinner-blade"></div>' +
-                    '</div>';
-                    document.getElementById("process_form").style.display = "block";
-            }
+        function loading(button_id1, button_id2) {
+            document.getElementById(button_id1).innerHTML = '';
+            document.getElementById(button_id2).innerHTML = '<div class="ispinner white large animating">'+
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '<div class="ispinner-blade"></div>' +
+                '</div>';
+        }
         
-        document.getElementById("btn").addEventListener("click", loading);
+        // document.getElementById("btn").addEventListener("click", function(){
+        //     loading("loader1");
+        // }, true);
+
+        // document.getElementById("sub_button").addEventListener("click", function(){
+        //     loading("loader2","loader1");
+        // }, true);
             
     </script>
 
     <script type="text/javascript"> 
         $(document).ready(function() { 
             $("#btn").click(function() { 
+                loading("loader2", "loader1");
                 var fd = new FormData(); 
                 var files = $('#fileToUpload')[0].files[0]; 
                 fd.append('fileToUpload', files); 
@@ -57,7 +64,7 @@
                         $("#process_form").toggle();
                     }, 
                 }); 
-            }); 
+            });
         }); 
 
     </script>
@@ -146,7 +153,7 @@
         }
 
         video {
-            width: 65%    !important;
+            width: 45%    !important;
             height: auto   !important;
         }
 
@@ -188,6 +195,7 @@
 
             <div>
                 <input id="btn" class="rborder padding-nn" type="button" value="Upload Video" name="submit">
+                <center><div id = "loader1" name="loader1" class="padding-nn"></div></center>
             </div>
 
         </form>
@@ -195,7 +203,7 @@
 
 
     <div>
-        <form hidden action="/process" name="process_form" id="process_form" method="post" onsubmit="loading();">
+        <form hidden action="/process" name="process_form" id="process_form" method="post" onsubmit="loading('loader1', 'loader2');">
             
             <center>
                 <div>
@@ -205,7 +213,7 @@
                 <div>
                     <input type="hidden" id="file_name" name="file_name">
                     <input id="sub_button" name="sub_button" type="submit" value="Process Video" class="rborder padding-nn">
-                    <div id = "loader" class="padding-nn"></div>
+                   <div id = "loader2" name="loader2" class="padding-nn"></div>
                 </div>
             
             </center>
