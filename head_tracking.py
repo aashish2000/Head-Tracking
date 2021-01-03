@@ -13,6 +13,7 @@ from keras import backend as K
 from keras.models import load_model
 from keras.optimizers import Adam
 import numpy as np
+import tensorflow as tf
 
 from src.models.keras_ssd512 import ssd_512
 from src.keras_loss_function.keras_ssd_loss import SSDLoss
@@ -24,6 +25,16 @@ from src.head_tracker.centroidtracker import CentroidTracker
 from src.utils.helper_utils import resize_frame, roi_segment, area_rect
 
 def video_inference(video_path):
+    NUM_PARALLEL_EXEC_UNITS = 4
+    config = tf.ConfigProto(intra_op_parallelism_threads=NUM_PARALLEL_EXEC_UNITS, inter_op_parallelism_threads=2,
+                        allow_soft_placement=True, device_count={'CPU': NUM_PARALLEL_EXEC_UNITS})
+    session = tf.Session(config=config)
+    K.set_session(session)
+    os.environ["OMP_NUM_THREADS"] = "4"
+    os.environ["KMP_BLOCKTIME"] = "30"
+    os.environ["KMP_SETTINGS"] = "1"
+    os.environ["KMP_AFFINITY"] = "granularity=fine,verbose,compact,1,0"
+
     # This model uses a 512x512 input size, let's set our image size to that resolution size
     img_height = 512
     img_width = 512
@@ -83,7 +94,7 @@ def video_inference(video_path):
     save_path = 'output-{}.webm'.format(datetime.datetime.timestamp(start))
 
     cap = cv2.VideoCapture(video_path)
-    save = cv2.VideoWriter("./results/"+save_path, cv2.VideoWriter_fourcc('V','P','8','0'), 30, (512,512))
+    save = cv2.VideoWriter("./video_files/results/"+save_path, cv2.VideoWriter_fourcc('V','P','8','0'), 30, (512,512))
 
     np.set_printoptions(precision=2, suppress=True, linewidth=90)
     frame = None

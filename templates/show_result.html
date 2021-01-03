@@ -22,7 +22,6 @@
             display: flex;
             flex-wrap: wrap;
     		justify-content: center;
-    		height: 80vh;
     		align-items: center;
         }
 
@@ -71,17 +70,19 @@
 
             <div>
                 <video autoplay controls id="video_player" name="video_player">
-                    <source src={{ ['/results/', result_path] | join('') }} type="video/webm">
+                    <source src={{ ['/video_files/results/', result_path] | join('') }} type="video/webm">
                 </video>
             </div>
             
             <div>
                 <input id="btn" class="rborder padding-nn" type="submit" value="Download Processed Video" name="down">
-                <button class="rborder padding-nn"><a href="/">Back</a></button>
+                <a href="/" class="rborder padding-nn">Back</a>
             </div>
 
         </form>
 
     </div> 
+
+    
 </body>
 </html>
