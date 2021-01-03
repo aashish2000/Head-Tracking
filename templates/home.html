@@ -12,9 +12,8 @@
     
     
     <script>
-        function loading(button_id1, button_id2) {
-            document.getElementById(button_id1).innerHTML = '';
-            document.getElementById(button_id2).innerHTML = '<div class="ispinner white large animating">'+
+        function loading(button_id1) {
+            document.getElementById(button_id1).innerHTML = '<div class="ispinner white large animating">'+
                 '<div class="ispinner-blade"></div>' +
                 '<div class="ispinner-blade"></div>' +
                 '<div class="ispinner-blade"></div>' +
@@ -43,7 +42,7 @@
     <script type="text/javascript"> 
         $(document).ready(function() { 
             $("#btn").click(function() { 
-                loading("loader2", "loader1");
+                loading("loader1");
                 var fd = new FormData(); 
                 var files = $('#fileToUpload')[0].files[0]; 
                 fd.append('fileToUpload', files); 
@@ -62,6 +61,7 @@
                         $("#video_player").html("<source src='/video_files/uploaded_videos/"+new_filename+"' type='video/webm'>");
                         $("#file_name").val(filename);
                         $("#process_form").toggle();
+                        $("#loader1").html("")
                     }, 
                 }); 
             });
@@ -203,7 +203,7 @@
 
 
     <div>
-        <form hidden action="/process" name="process_form" id="process_form" method="post" onsubmit="loading('loader1', 'loader2');">
+        <form hidden action="/process" name="process_form" id="process_form" method="post" onsubmit="loading('loader2');">
             
             <center>
                 <div>

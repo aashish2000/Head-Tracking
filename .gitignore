@@ -114,6 +114,7 @@
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+src/head_tracker/__pycache__/
 *.py[cod]
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,images,video
