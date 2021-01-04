@@ -8,10 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     
     <style>
-        .lcd-font {
-            font-family: 'DS-Digital, Bold Italic';
-            src: "/static/fonts/DS-DIGIT.TTF";
+        @font-face {
+            font-family: 'DS-Digital';
+            src: url("/static/fonts/DS-DIGIT.TTF");
+            font-weight: bold;
         }
+
+        .lcd-font {
+            font-family: 'DS-Digital';
+            color: rgb(0, 231, 31);
+        }
+
         html {
             height: 100%;
             font-family: 'Open Sans', sans-serif;
