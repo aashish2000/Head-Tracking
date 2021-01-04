@@ -85,7 +85,7 @@ def video_inference(video_path):
     save_path = 'output-{}.webm'.format(datetime.datetime.timestamp(start))
 
     cap = cv2.VideoCapture(video_path)
-    save = cv2.VideoWriter("./video_files/results/"+save_path, cv2.VideoWriter_fourcc('V','P','8','0'), 30, (512,512))
+    save = cv2.VideoWriter("./static/results/"+save_path, cv2.VideoWriter_fourcc('V','P','8','0'), 30, (512,512))
 
     np.set_printoptions(precision=2, suppress=True, linewidth=90)
     frame = None

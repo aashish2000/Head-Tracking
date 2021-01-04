@@ -8,10 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     
     <style>
+        .lcd-font {
+            font-family: 'DS-Digital, Bold Italic';
+            src: "/static/fonts/DS-DIGIT.TTF";
+        }
         html {
             height: 100%;
             font-family: 'Open Sans', sans-serif;
-            background-color: #D3D3D3
+            background-color: #eeeeee
         }
 
         h1 {
@@ -66,12 +70,12 @@
             <div class="break"></div>
 
             <div>
-                <h3> Total No of Heads in the Video: {{ head_count }} </h3>
+                <h3> Total No of Heads in the Video:</h3> <h3 class="lcd-font">{{ head_count }} </h3>
             </div>
 
             <div>
                 <video autoplay controls id="video_player" name="video_player">
-                    <source src={{ ['/video_files/results/', result_path] | join('') }} type="video/webm">
+                    <source src={{ ['/static/results/', result_path] | join('') }} type="video/webm">
                 </video>
             </div>
             

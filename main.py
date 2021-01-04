@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 app = FastAPI()
-app.mount("/video_files", StaticFiles(directory="./video_files"), name="video_files")
+app.mount("/static", StaticFiles(directory="./static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -32,14 +32,14 @@ async def display_home(request: Request):
 @app.post("/video_upload")
 async def video_receive(request: Request):
     body = await request.form()
-    video_name = "./video_files/uploaded_videos/" + body["fileToUpload"].filename
+    video_name = "./static/uploaded_videos/" + body["fileToUpload"].filename
     contents = await body["fileToUpload"].read()
 
     with open(video_name,"wb") as f:
         f.write(contents)
     
     # Convert Video Format for viewing in a Browser
-    command = "ffmpeg -y -i " + video_name + " -c:v libx264 -c:a libfaac -movflags +faststart " + "./video_files/uploaded_videos/" + ".".join((body["fileToUpload"].filename).split(".")[:-1])+".mp4"
+    command = "ffmpeg -y -i " + video_name + " -c:v libx264 -c:a libfaac -movflags +faststart " + "./static/uploaded_videos/" + ".".join((body["fileToUpload"].filename).split(".")[:-1])+".mp4"
     subprocess.call(command, shell=True)
 
 
@@ -47,7 +47,7 @@ async def video_receive(request: Request):
 @app.post("/process", response_class=HTMLResponse)
 async def video_receive(request: Request):
     body = await request.form()
-    video_name = "./video_files/uploaded_videos/"+body["file_name"]
+    video_name = "./static/uploaded_videos/"+body["file_name"]
     print(video_name)
     result_video, heads = await sync_to_async(video_inference)(video_name)
     return templates.TemplateResponse("show_result.html", {"request": request, "result_path": result_video, "head_count": heads})
@@ -55,7 +55,7 @@ async def video_receive(request: Request):
 # Download Processed Videos
 @app.post("/download", response_class=FileResponse)
 async def download_video(file_name: str = Form(...)):
-    return FileResponse("./video_files/results/"+file_name, media_type='application/octet-stream', filename=file_name)
+    return FileResponse("./static/results/"+file_name, media_type='application/octet-stream', filename=file_name)
 
 # Enable for providing global access URL
 import nest_asyncio
