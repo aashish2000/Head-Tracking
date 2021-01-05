@@ -19,7 +19,7 @@ This use case deals with the identification and counting of heads in video foota
     - Centroid Tracking and head Tagging
 
 ## Packages Used
-- TensorFlow - 1.14.0
+- TensorFlow - 1.15.4
 - Keras - 2.2.4
 - FastAPI
 - OpenCV
