@@ -21,7 +21,7 @@ from src.keras_layers.keras_layer_AnchorBoxes import AnchorBoxes
 from src.keras_layers.keras_layer_DecodeDetections import DecodeDetections
 from src.keras_layers.keras_layer_DecodeDetectionsFast import DecodeDetectionsFast
 from src.keras_layers.keras_layer_L2Normalization import L2Normalization
-from src.head_tracker.centroidtracker import CentroidTracker
+from src.centroid_tracking.centroidtracker import CentroidTracker
 from src.utils.helper_utils import resize_frame, roi_segment, area_rect
 
 def video_inference(video_path):

@@ -1,5 +1,5 @@
 import os, subprocess
-from head_tracking import video_inference
+from src.head_tracking import video_inference
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
