@@ -46,9 +46,21 @@ python main.py
 ```
 
 ## Screenshots
-![](./assets/pic1.png)
-![](./assets/pic2.png)
-![](./assets/pic3.png)
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="./assets/pic1.png" style="display:block; margin-left: auto; margin-right: auto;" title="caption" />
+    <span class="img_caption" style="display: block; text-align: center;">Video Upload UI</span>
+</span><br><br>
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="./assets/pic2.png" style="display:block; margin-left: auto; margin-right: auto;" title="caption" />
+    <span class="img_caption" style="display: block; text-align: center;">Preview Uploaded Video</span>
+</span><br><br>
+
+<span class="img_container center" style="display: block;">
+    <img alt="test" src="./assets/pic3.png" style="display:block; margin-left: auto; margin-right: auto;" title="caption" />
+    <span class="img_caption" style="display: block; text-align: center;">View Detected Heads and Total Count</span>
+</span><br><br>
 
 ## References
 - <https://github.com/AVAuco/ssd_head_keras>

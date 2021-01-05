@@ -69,7 +69,7 @@ def video_inference(video_path):
     model = load_model(weights_path, custom_objects={'AnchorBoxes': AnchorBoxes,
                                                     'L2Normalization': L2Normalization,
                                                     'DecodeDetections': decode_layer,
-                                                    'compute_loss': ssd_loss.compute_loss})
+                                                    'compute_loss': ssd_loss.compute_loss}, compile=False)
 
 
     start = datetime.datetime.now()
