@@ -18,7 +18,7 @@ distlib==0.3.0
 distro==1.4.0
 dnspython==2.0.0
 email-validator==1.1.2
-fastapi==0.63.0
+fastapi==0.65.2
 gast==0.2.2
 google-pasta==0.2.0
 graphene==2.1.8
